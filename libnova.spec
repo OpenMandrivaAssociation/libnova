@@ -26,7 +26,7 @@ astrometry and astrodynamics library
 
 %package devel
 Summary:    Development files for %name
-Group:      Development/Libraries
+Group:      Development/KDE and Qt
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
