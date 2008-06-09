@@ -12,8 +12,12 @@ BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root
 Libnova is a general purpose, double precision, celestial mechanics, 
 astrometry and astrodynamics library
 
+%if %mdkversion < 200900
 %post -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -p /sbin/ldconfig
+%endif
 
 %files
 %defattr(-,root,root,-)
