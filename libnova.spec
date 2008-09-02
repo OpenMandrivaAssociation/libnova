@@ -1,12 +1,17 @@
+%define major	2
+%define libname	%mklibname nova %{major}
+%define develname %mklibname nova -d
+
 Name:       libnova
-Version:    0.12.1
-Release:    %mkrel 2
+Version:    0.12.2
+Release:    %mkrel 1
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
 License:    LGPLv2+
 URL:        http://sourceforge.net/projects/libnova/
 Source0:    http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root
+Requires:   %{libname} = %{version}-%{release}
 
 %description
 Libnova is a general purpose, double precision, celestial mechanics, 
@@ -22,21 +27,32 @@ astrometry and astrodynamics library
 %files
 %defattr(-,root,root,-)
 %doc ChangeLog README AUTHORS NEWS COPYING
-%{_libdir}/libnova-0.12.so.1.0.0
-%{_libdir}/libnova-0.12.so.1
 %{_bindir}/libnovaconfig
+
 
 #--------------------------------------------------------------------
 
-%package devel
+%package -n %{libname}
+Summary:    Library files for %name
+Group:      Development/KDE and Qt
+
+%description -n %{libname}
+Contains library files for nova
+
+%files -n %{libname}
+%{_libdir}/libnova-0.12.so.%{major}*
+
+#--------------------------------------------------------------------
+
+%package -n %{develname}
 Summary:    Development files for %name
 Group:      Development/KDE and Qt
-Requires:   %{name} = %{version}-%{release}
+Requires:   %{libname} = %{version}-%{release}
 
-%description devel
+%description -n %{develname}
 Contains library and header files for %nova
 
-%files devel
+%files -n %{develname}
 %doc COPYING examples/*.c
 %{_includedir}/libnova
 %{_libdir}/libnova.so
