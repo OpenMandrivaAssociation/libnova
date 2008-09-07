@@ -4,7 +4,7 @@
 
 Name:       libnova
 Version:    0.12.2
-Release:    %mkrel 1
+Release:    %mkrel 2
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
 License:    LGPLv2+
@@ -48,6 +48,7 @@ Contains library files for nova
 Summary:    Development files for %name
 Group:      Development/KDE and Qt
 Requires:   %{libname} = %{version}-%{release}
+Provides:   %{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
 Contains library and header files for %nova
