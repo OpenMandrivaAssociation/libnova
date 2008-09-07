@@ -4,7 +4,7 @@
 
 Name:       libnova
 Version:    0.12.2
-Release:    %mkrel 2
+Release:    %mkrel 3
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
 License:    LGPLv2+
@@ -29,7 +29,6 @@ astrometry and astrodynamics library
 %doc ChangeLog README AUTHORS NEWS COPYING
 %{_bindir}/libnovaconfig
 
-
 #--------------------------------------------------------------------
 
 %package -n %{libname}
@@ -49,6 +48,7 @@ Summary:    Development files for %name
 Group:      Development/KDE and Qt
 Requires:   %{libname} = %{version}-%{release}
 Provides:   %{name}-devel = %{version}-%{release}
+Obsoletes:  %{name}-devel < %{version}-%{release}
 
 %description -n %{develname}
 Contains library and header files for %nova
