@@ -63,14 +63,13 @@ Contains library and header files for %nova
 %prep
 %setup -q
 
-
 %build
-%configure --disable-static
-make CFLAGS="$RPM_OPT_FLAGS"  %{?_smp_mflags}
+%configure2_5x --disable-static
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+%makeinstall_std
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 %clean
