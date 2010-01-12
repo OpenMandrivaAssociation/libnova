@@ -1,9 +1,10 @@
-%define major	3
-%define libname	%mklibname nova %{major}
-%define develname %mklibname nova -d
+%define major	0
+%define api	13
+%define libname	%mklibname nova %{api}_%{major}
+%define develname %mklibname nova %{api} -d
 
 Name:       libnova
-Version:    0.12.3
+Version:    0.13.0
 Release:    %mkrel 1
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
@@ -39,7 +40,7 @@ Group:      Development/KDE and Qt
 Contains library files for nova
 
 %files -n %{libname}
-%{_libdir}/libnova-0.12.so.%{major}*
+%{_libdir}/libnova-0.%{api}.so.%{major}*
 
 #--------------------------------------------------------------------
 
@@ -68,9 +69,9 @@ Contains library and header files for %nova
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
