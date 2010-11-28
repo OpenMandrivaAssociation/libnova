@@ -5,7 +5,7 @@
 
 Name:       libnova
 Version:    0.13.0
-Release:    %mkrel 1
+Release:    %mkrel 2
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
 License:    LGPLv2+
