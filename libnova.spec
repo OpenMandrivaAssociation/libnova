@@ -1,32 +1,23 @@
 %define major	0
-%define api	13
+%define api	15
 %define libname	%mklibname nova %{api}_%{major}
 %define develname %mklibname nova %{api} -d
 
 Name:       libnova
-Version:    0.13.0
-Release:    %mkrel 3
+Version:    0.15.0
+Release:    1
 Summary:    General purpose astronomy & astrodynamics library
 Group:      Sciences/Astronomy
 License:    LGPLv2+
 URL:        http://sourceforge.net/projects/libnova/
 Source0:    http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:   %{libname} = %{version}-%{release}
 
 %description
 Libnova is a general purpose, double precision, celestial mechanics, 
 astrometry and astrodynamics library
 
-%if %mdkversion < 200900
-%post -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -p /sbin/ldconfig
-%endif
-
 %files
-%defattr(-,root,root,-)
 %doc ChangeLog README AUTHORS NEWS COPYING
 %{_bindir}/libnovaconfig
 
@@ -65,6 +56,8 @@ Contains library and header files for %nova
 %setup -q
 
 %build
+libtoolize
+autoreconf -fi
 %configure2_5x --disable-static
 %make
 
@@ -73,5 +66,3 @@ rm -rf %{buildroot}
 %makeinstall_std
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
-%clean
-rm -rf %{buildroot}
