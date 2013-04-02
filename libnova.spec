@@ -2,6 +2,7 @@
 %define api	13
 %define libname	%mklibname nova %{api}_%{major}
 %define develname %mklibname nova %{api} -d
+%define debug_package          %{nil}
 
 Name:       libnova
 Version:    0.13.0
@@ -11,6 +12,7 @@ Group:      Sciences/Astronomy
 License:    LGPLv2+
 URL:        http://sourceforge.net/projects/libnova/
 Source0:    http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source100:	libnova.rpmlintrc
 Requires:   %{libname} = %{version}-%{release}
 
 %description
