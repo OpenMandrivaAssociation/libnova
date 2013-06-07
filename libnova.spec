@@ -1,57 +1,38 @@
-%define major	0
-%define api	13
-%define libname	%mklibname nova %{api}_%{major}
-%define develname %mklibname nova %{api} -d
 %define debug_package          %{nil}
+%define api	0.15
+%define major	0
+%define libname	%mklibname nova %{api} %{major}
+%define devname %mklibname nova %{api} -d
 
-Name:       libnova
-Version:    0.13.0
-Release:    5
-Summary:    General purpose astronomy & astrodynamics library
-Group:      Sciences/Astronomy
-License:    LGPLv2+
-URL:        http://sourceforge.net/projects/libnova/
-Source0:    http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Source100:	libnova.rpmlintrc
-Requires:   %{libname} = %{version}-%{release}
+Summary:	General purpose astronomy & astrodynamics library
+Name:		libnova
+Version:	0.15.0
+Release:	2
+Group:		Sciences/Astronomy
+License:	LGPLv2+
+Url:		http://sourceforge.net/projects/libnova/
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 
 %description
 Libnova is a general purpose, double precision, celestial mechanics, 
 astrometry and astrodynamics library
 
-%files
-%doc ChangeLog README AUTHORS NEWS COPYING
-%{_bindir}/libnovaconfig
-
-#--------------------------------------------------------------------
-
 %package -n %{libname}
-Summary:    Library files for %{name}
-Group:      Development/KDE and Qt
+Summary:	Library files for %{name}
+Group:		Development/KDE and Qt
 
 %description -n %{libname}
 Contains library files for nova.
 
-%files -n %{libname}
-%{_libdir}/libnova-0.%{api}.so.%{major}*
+%package -n %{devname}
+Summary:	Development files for %{name}
+Group:		Development/KDE and Qt
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{name} < 0.15.0-2
 
-#--------------------------------------------------------------------
-
-%package -n %{develname}
-Summary:    Development files for %{name}
-Group:      Development/KDE and Qt
-Requires:   %{libname} = %{version}-%{release}
-Provides:   %{name}-devel = %{version}-%{release}
-
-%description -n %{develname}
+%description -n %{devname}
 Contains library and header files for nova.
-
-%files -n %{develname}
-%doc COPYING examples/*.c
-%{_includedir}/libnova
-%{_libdir}/libnova.so
-
-#--------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -62,3 +43,14 @@ Contains library and header files for nova.
 
 %install
 %makeinstall_std
+
+%files -n %{libname}
+%{_libdir}/libnova-%{api}.so.%{major}*
+
+%files -n %{devname}
+%doc examples/*.c
+%doc ChangeLog README AUTHORS NEWS COPYING
+%{_bindir}/libnovaconfig
+%{_includedir}/libnova
+%{_libdir}/libnova.so
+
