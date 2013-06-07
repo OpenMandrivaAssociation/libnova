@@ -36,6 +36,7 @@ Contains library and header files for nova.
 
 %prep
 %setup -q
+autoreconf -fi
 
 %build
 %configure2_5x --disable-static
