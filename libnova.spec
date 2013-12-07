@@ -7,7 +7,7 @@
 Summary:	General purpose astronomy & astrodynamics library
 Name:		libnova
 Version:	0.15.0
-Release:	5
+Release:	6
 Group:		Sciences/Astronomy
 License:	LGPLv2+
 Url:		http://sourceforge.net/projects/libnova/
