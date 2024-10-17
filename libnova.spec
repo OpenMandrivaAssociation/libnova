@@ -10,7 +10,7 @@ Version:	0.15.0
 Release:	12
 Group:		Sciences/Astronomy
 License:	LGPLv2+
-Url:		http://sourceforge.net/projects/libnova/
+Url:		https://sourceforge.net/projects/libnova/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 
 %description
