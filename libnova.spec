@@ -13,6 +13,11 @@ License:	LGPLv2+
 Url:		https://sourceforge.net/projects/libnova/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 Libnova is a general purpose, double precision, celestial mechanics, 
 astrometry and astrodynamics library
