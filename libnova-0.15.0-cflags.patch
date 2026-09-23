@@ -1,0 +1,12 @@
+--- libnova-0.15.0/configure.in.omv
++++ libnova-0.15.0/configure.in
+@@ -63,7 +63,8 @@
+ AC_CHECK_FUNCS([asinl])
+ AC_CHECK_FUNCS([atan2l])
+ 
+-CFLAGS=-Wall
++dnl Do not discard flags passed in by the caller (for example -g).
++CFLAGS="${CFLAGS} -Wall"
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
